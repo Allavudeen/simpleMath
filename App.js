@@ -14,6 +14,12 @@ export default class App extends Component {
     var R = N1 + N2;
     alert(N1 + '+' + N2 + '=' + R);
   }
+  subtract = () => {
+    var N1 = parseInt(this.state.Num1);
+    var N2 = parseInt(this.state.Num2);
+    var R = N1 - N2;
+    alert(N1 + '-' + N2 + '=' + R);
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -27,7 +33,12 @@ export default class App extends Component {
           keyboardType='numeric'
           placeholder='Num2'
           onChangeText={Num2 => this.setState({ Num2 })} />
-        <Button title="Sum" onPress={this.sum} />
+        <View style={styles.vbtn}>
+          <Button title="Sum" onPress={this.sum} />
+        </View>
+        <View style={styles.vbtn}>
+          <Button title="Subtract" onPress={this.subtract} />
+        </View>
         <StatusBar style="auto" />
       </View>
     );
@@ -37,7 +48,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#8096ad',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -49,5 +60,10 @@ const styles = StyleSheet.create({
     borderColor: '#c21f13',
     margin: 10,
     padding: 5,
+  },
+  vbtn: {
+    width: 150,
+    backgroundColor: '#1a6cc4',
+    margin: 5,
   },
 });
