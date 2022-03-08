@@ -1,13 +1,37 @@
+import React, { Component } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, TextInput, View, Button } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { Num1: 0, Num2: 0 };
+  }
+  sum = () => {
+    var N1 = parseInt(this.state.Num1);
+    var N2 = parseInt(this.state.Num2);
+    var R = N1 + N2;
+    alert(N1 + '+' + N2 + '=' + R);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          style={styles.txtinput}
+          keyboardType='numeric'
+          placeholder='Num1'
+          onChangeText={Num1 => this.setState({ Num1 })} />
+        <TextInput
+          style={styles.txtinput}
+          keyboardType='numeric'
+          placeholder='Num2'
+          onChangeText={Num2 => this.setState({ Num2 })} />
+        <Button title="Sum" onPress={this.sum} />
+        <StatusBar style="auto" />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -16,5 +40,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  txtinput: {
+    width: 200,
+    backgroundColor: '#d96e66',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: '#c21f13',
+    margin: 10,
+    padding: 5,
   },
 });
